@@ -1,33 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>hw-13</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-  rel="stylesheet"
-/>
-   
-  </head>
 
-  <body>
-    <form class="search-form" id="search-form">
-      <input
-        type="text"
-        name="query"
-        autocomplete="off"
-        placeholder="Search images..."
-      />
-    </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>hw-13</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
 
-    <ul class="gallery">
-      <!-- Список <li> с карточками изображений -->
-    </ul>
+<body>
+  <form class="converter">
 
-    <button type="button" class="btn" data-action="load-more">
-      Показать еще
-    </button>
-    
-  </body>
+
+    <div role="group" class="checkboxUnitIn">
+      <p>select unit for</p>
+      <label>
+        <input type="radio" name="unitIn" value="m" checked />
+        m
+      </label>
+      <label>
+        <input type="radio" name="unitIn" value="sm" />
+        sm
+      </label>
+      <label>
+        <input type="radio" name="unitIn" value="in" />
+        in
+      </label>
+      <label>
+        <input type="radio" name="unitIn" value="ft" />
+        ft
+      </label>
+
+
+    </div>
+
+    <p>Enter number to convert</p>
+    <input class="userInput" type="text" name="value" autocomplete="off" placeholder="Enter your value..." />
+
+    <div role="group" class="checkboxUnitOut">
+      <p>select unit to do</p>
+      <label>
+        <input type="radio" name="convert_to" value="m" checked />
+        m
+      </label>
+
+      <input type="radio" name="convert_to" value="sm" />
+      sm
+      </label>
+      <label>
+        <input type="radio" name="convert_to" value="in" />
+        in
+      </label>
+      <label>
+        <input type="radio" name="convert_to" value="ft" />
+        ft
+      </label>
+
+
+    </div>
+    <button type="submit">Convert</button>
+    <p>Result</p>
+    <input type="text" name="result" autocomplete="off" placeholder="your value is..." />
+
+  </form>
+</body>
+
+
 </html>
