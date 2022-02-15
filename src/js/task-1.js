@@ -9,6 +9,25 @@ const state = {
   result: '',
 }
 
+const coefficient = {
+  m_sm: 100,
+  m_in: 39.37,
+  m_ft: 3.28,
+  m_m: 1,
+  sm_sm: 1,
+  sm_m: 0.01,
+  sm_in: 0.39,
+  sm_ft: 0.03,
+  in_sm: 2.54,
+  in_m: 0.03,
+  in_in: 1,
+  in_ft: 0.08,
+  ft_m: 0.3,
+  ft_sm: 30.48,
+  ft_in: 12,
+  ft_ft: 1,
+}
+
 refs.form.addEventListener('submit', event => {
   event.preventDefault();
   refs.result.value = state.result
@@ -20,66 +39,52 @@ refs.form.addEventListener('submit', event => {
     submittedData[key] = value;
   })
 
+  const keyForCoefficient = submittedData.unitIn + "_" + submittedData.convert_to
   state.distance.value = +(submittedData.value)
-  const distanceUnit = state.distance.unit = submittedData.unitIn
-  const convertTo = state.convert_to = submittedData.convert_to
+  state.distance.unit = submittedData.unitIn
+  state.convert_to = submittedData.convert_to
 
   const calculate = function () {
-
-    if (distanceUnit === 'm' && convertTo === 'sm') {
-      state.result = state.distance.value * 100;
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'm' && convertTo === 'in') {
-      state.result = (state.distance.value * 39.37).toFixed(2);
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'm' && convertTo === 'ft') {
-      state.result = (state.distance.value * 3.28).toFixed(2);
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'm' && convertTo === 'm') {
-      state.result = state.distance.value;
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'sm' && convertTo === 'm') {
-      state.result = (state.distance.value * 0.01).toFixed(2);
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'sm' && convertTo === 'in') {
-      state.result = (state.distance.value * 0.39).toFixed(2);
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'sm' && convertTo === 'ft') {
-      state.result = (state.distance.value * 0.03).toFixed(2);
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'sm' && convertTo === 'sm') {
-      state.result = state.distance.value;
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'in' && convertTo === 'm') {
-      state.result = (state.distance.value * 0.03).toFixed(2);
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'in' && convertTo === 'sm') {
-      state.result = (state.distance.value * 2.54).toFixed(2);
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'in' && convertTo === 'in') {
-      state.result = state.distance.value;
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'in' && convertTo === 'ft') {
-      state.result = (state.distance.value * 0.08).toFixed(2);
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'ft' && convertTo === 'm') {
-      state.result = (state.distance.value * 0.3).toFixed(2)
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'ft' && convertTo === 'sm') {
-      state.result = (state.distance.value * 30.48).toFixed(2);
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'ft' && convertTo === 'in') {
-      state.result = state.distance.value * 12;
-      refs.result.value = state.result;
-    } else if (distanceUnit === 'ft' && convertTo === 'ft') {
-      state.result = state.distance.value;
-      refs.result.value = state.result;
-    }
-
-
+    state.result = +(state.distance.value) * coefficient[keyForCoefficient]
+    refs.result.value = state.result;
   }
 
   calculate();
   console.log(state);
-
 })
+
+
+
+// const config = {
+//   "m": {
+//     "inch": 39.37,
+//     "ft": 3.28084
+//   },
+//   "inch": {
+//     "m": 0.0254,
+//     "ft": 0.0833333
+//   }
+// }
+
+// const input = {
+//   "distance": {
+//     "unit": "m",
+//     "value": 0.5
+//   },
+//   "convert_to": "ft"
+// }
+
+// function Test(obj) {
+//   const {
+//     unit,
+//     value
+//   } = obj.distance;
+//   const result = value * config[unit][obj.convert_to];
+//   return {
+//     "unit": obj.convert_to,
+//     "value": result
+//   }
+// }
+
+// const output = Test(input);
+// document.write(JSON.stringify(output));
