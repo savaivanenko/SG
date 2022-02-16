@@ -1,13 +1,13 @@
-import refs from './refs'
+import refs from "./refs";
 
 const state = {
   distance: {
-    unit: '',
-    value: ''
+    unit: "",
+    value: "",
   },
-  convert_to: '',
-  result: '',
-}
+  convert_to: "",
+  result: "",
+};
 
 const coefficient = {
   m_sm: 100,
@@ -26,34 +26,33 @@ const coefficient = {
   ft_sm: 30.48,
   ft_in: 12,
   ft_ft: 1,
-}
+};
 
-refs.form.addEventListener('submit', event => {
+refs.form.addEventListener("submit", (event) => {
   event.preventDefault();
-  refs.result.value = state.result
+  refs.result.value = state.result;
 
   const formData = new FormData(event.target);
-  const submittedData = {}
+  const submittedData = {};
 
   formData.forEach((value, key) => {
     submittedData[key] = value;
-  })
+  });
 
-  const keyForCoefficient = submittedData.unitIn + "_" + submittedData.convert_to
-  state.distance.value = +(submittedData.value)
-  state.distance.unit = submittedData.unitIn
-  state.convert_to = submittedData.convert_to
+  const keyForCoefficient =
+    submittedData.unitIn + "_" + submittedData.convert_to;
+  state.distance.value = +submittedData.value;
+  state.distance.unit = submittedData.unitIn;
+  state.convert_to = submittedData.convert_to;
 
   const calculate = function () {
-    state.result = +(state.distance.value) * coefficient[keyForCoefficient]
+    state.result = state.distance.value * coefficient[keyForCoefficient];
     refs.result.value = state.result;
-  }
+  };
 
   calculate();
   console.log(state);
-})
-
-
+});
 
 // const config = {
 //   "m": {

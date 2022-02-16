@@ -11,8 +11,6 @@
 
 <body>
   <form class="converter">
-
-
     <div role="group" class="checkboxUnitIn">
       <p>select unit for</p>
       <label>
@@ -31,8 +29,6 @@
         <input type="radio" name="unitIn" value="ft" />
         ft
       </label>
-
-
     </div>
 
     <p>Enter number to convert</p>
@@ -44,7 +40,6 @@
         <input type="radio" name="convert_to" value="m" checked />
         m
       </label>
-
       <input type="radio" name="convert_to" value="sm" />
       sm
       </label>
@@ -56,14 +51,41 @@
         <input type="radio" name="convert_to" value="ft" />
         ft
       </label>
-
-
     </div>
     <button type="submit">Convert</button>
     <p>Result</p>
     <input type="text" name="result" autocomplete="off" placeholder="your value is..." />
-
   </form>
+
+  <br>
+
+
+  <div class="quiz">
+    <div class="quiz-questions">
+      <div class="quiz-questions-item">
+        <div class="quiz-questions-item_question">QUESTION-1</div>
+        <ul class="quiz-question-item_answers">
+          <li>
+            <label name="answer-1">
+              <input type="radio" name="winamp" value="Y">
+              ANSWER-1
+            </label>
+          </li>
+          <li>
+            <label name="answer-2">
+              <input type="radio" name="winamp" value="N">
+              ANSWER-2
+            </label>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+    <button class="btn-next" >NEXT</button>
+  </div>
+
+
+
 </body>
 
 
